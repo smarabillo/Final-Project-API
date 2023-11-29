@@ -6,17 +6,17 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-$user = new Users();
-if($user->get_session()){
-	header("location: index.php");
-}
-if(isset($_REQUEST['submit'])){
-	extract($_REQUEST);
-	$login = $user->check_login($email, $password );
-	if($login){
-		header("location: index.php");
-	}
-}
+// $user = new Users();
+// if($user->get_session()){
+// 	header("location: index.php");
+// }
+// if(isset($_REQUEST['submit'])){
+// 	extract($_REQUEST);
+// 	$login = $user->check_login($email, $password );
+// 	if($login){
+// 		header("location: index.php");
+// 	}
+// }
 
 ?>
 <!DOCTYPE html>
@@ -64,6 +64,5 @@ if(isset($_REQUEST['submit'])){
           </div>
       </form>    
     </div> 
-
   </body>
 </html>

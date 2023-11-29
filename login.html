@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="27943340529-3jntji0t0nla462r46tl8lkvnfbb1stp.apps.googleusercontent.com">    
+    <title>API Final Project</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="website icon" type="jpg" href="img/Web-API-logo.svg">
+
+  </head>
+  <body>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script> 
+      function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+  </script>
+
+    <div class="left-side">
+      <div id="logo">
+        <img src="img/Web-API-logo.svg" alt="website-logo" style="width: 75px; height: 75px;">
+      </div>
+      <div class="title">
+        <h1>Welcome to Our Website</h1>
+        <p>lorem ipsum dolor sit amet.</p>
+      </div>
+      <div class="mainbtn">
+        <button>Join Us</button>
+      </div>  
+    </div>
+
+
+    <div class="right-side">
+      <form method="POST" name="login" onsubmit="">
+        <h3 class="loginText">Welcome Back</h3>
+        <p class="loginText">You were missed!</p>
+        
+          <input type="text" class="input"  placeholder="Email" >
+          <input type="password" class="input"  placeholder="Password">
+          <a href="http://">Forgot Password?</a>
+          <button class="signIn" type="submit" name="submit" value="Submit">Sign in</button>
+          <hr>
+          <p>or sign in</p>
+
+          <button id="googleBtn"></button>
+
+          <script>
+            function onSuccess(googleUser) {
+              console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+            }
+            function onFailure(error) {
+              console.log(error);
+            }
+            function renderButton() {
+              gapi.signin2.render('googleBtn', {
+                'scope': 'profile email',
+                'width': 220,
+                'height': 35,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+              });
+            }
+          </script>
+        
+          <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+          <!-- <button class="g-signin2" id="google" data-onsuccess="onSignIn">
+            <img src="img/googleicon.svg" alt="google sign in" >
+            <div id="googletext">Sign In with google</div>
+          </button> -->
+
+          <div class="signup">
+            No account yet? <span class="signup">Sign Up</span>
+          </div>
+
+      </form>    
+    </div> 
+  </body>
+</html>
